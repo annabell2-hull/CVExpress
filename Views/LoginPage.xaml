@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVExpress.Views.LoginPage"
+             Title="Connexion"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="14"
+                         VerticalOptions="Center">
+
+            <Label Text="CVExpress" FontSize="32" FontAttributes="Bold"
+             TextColor="{StaticResource Primary}"
+             HorizontalOptions="Center"/>
+            <Label Text="Crée ton CV professionnel depuis ton téléphone"
+             FontSize="15" TextColor="Gray"
+             HorizontalOptions="Center"
+             HorizontalTextAlignment="Center"/>
+
+            <Label Text="Adresse e-mail" Margin="0,24,0,0"
+             TextColor="{StaticResource Primary}"/>
+            <Entry x:Name="entryEmail" Keyboard="Email"
+             Placeholder="exemple@mail.com"/>
+
+            <Label Text="Mot de passe" TextColor="Gray"/>
+            <Entry x:Name="entryMotDePasse" IsPassword="True"
+             Placeholder="Mot de passe"/>
+
+            <Button Text="Se connecter" Margin="0,16,0,0"
+              BackgroundColor="{StaticResource Primary}"
+              TextColor="White" CornerRadius="14"
+              HeightRequest="52"
+              Clicked="OnSeConnecterClicked"/>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
+                <Label Text="Pas encore de compte ?" TextColor="Gray"/>
+                <Label Text="Créer un compte"
+               TextColor="{StaticResource Primary}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCreerCompteTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
