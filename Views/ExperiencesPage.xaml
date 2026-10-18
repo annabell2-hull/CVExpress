@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CVExpress.ViewModels"
+             x:Class="CVExpress.Views.ExperiencesPage"
+             Title="Expérience professionnelle"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="24" RowSpacing="12">
+
+        <HorizontalStackLayout Spacing="14">
+            <Label Text="←" FontSize="26" TextColor="Gray"
+             VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RetourCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Expérience professionnelle" FontSize="20"
+             FontAttributes="Bold" TextColor="Black"
+             VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <Label Grid.Row="1" Text="Ajouter les plus pertinentes"
+           FontSize="22" FontAttributes="Bold" TextColor="Black"/>
+
+        <Grid Grid.Row="2">
+            <Label Text="Aucune expérience pour l'instant."
+             TextColor="Gray" VerticalOptions="Start"
+             IsVisible="{Binding Vide}"/>
+
+            <CollectionView ItemsSource="{Binding Experiences}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="#F3F4F6" Stroke="Gray" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="14"/>
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                  Command="{Binding Source={RelativeSource
+                    AncestorType={x:Type vm:ExperiencesViewModel}},
+                    Path=ModifierCommand}"
+                  CommandParameter="{Binding .}"/>
+                            </Border.GestureRecognizers>
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="{Binding Poste}" FontSize="18"
+                       FontAttributes="Bold" TextColor="Black"/>
+                                <Label Text="{Binding Entreprise}" TextColor="Gray"/>
+                                <Label Text="{Binding Periode}" TextColor="Gray"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="3" Spacing="10">
+            <Button Text="Ajouter une nouvelle expérience"
+              BackgroundColor="White" TextColor="Black"
+              BorderColor="Gray" BorderWidth="1" CornerRadius="14"
+              Command="{Binding AjouterCommand}"/>
+            <Button Text="Continuer"
+              BackgroundColor="{StaticResource Primary}"
+              TextColor="White" CornerRadius="14" HeightRequest="52"
+              Command="{Binding ContinuerCommand}"/>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>

@@ -19,25 +19,28 @@
 
             <Label Text="Adresse e-mail" Margin="0,24,0,0"
              TextColor="{StaticResource Primary}"/>
-            <Entry x:Name="entryEmail" Keyboard="Email"
+            <Entry Text="{Binding Email}" Keyboard="Email"
              Placeholder="exemple@mail.com"/>
 
             <Label Text="Mot de passe" TextColor="Gray"/>
-            <Entry x:Name="entryMotDePasse" IsPassword="True"
+            <Entry Text="{Binding MotDePasse}" IsPassword="True"
              Placeholder="Mot de passe"/>
+
+            <Label Text="{Binding Erreur}" TextColor="Red"
+             IsVisible="{Binding ErreurVisible}"/>
 
             <Button Text="Se connecter" Margin="0,16,0,0"
               BackgroundColor="{StaticResource Primary}"
               TextColor="White" CornerRadius="14"
               HeightRequest="52"
-              Clicked="OnSeConnecterClicked"/>
+              Command="{Binding ConnexionCommand}"/>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
                 <Label Text="Pas encore de compte ?" TextColor="Gray"/>
                 <Label Text="Créer un compte"
                TextColor="{StaticResource Primary}">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnCreerCompteTapped"/>
+                        <TapGestureRecognizer Command="{Binding CreerCompteCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </HorizontalStackLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVExpress.Views.ExportPage"
+             Title="Export du CV"
+             BackgroundColor="#F5F6F8">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="14">
+
+            <HorizontalStackLayout Spacing="14">
+                <Label Text="←" FontSize="26" TextColor="Gray"
+               VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RetourCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Export du CV" FontSize="24" FontAttributes="Bold"
+               TextColor="Black" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Mini-aperçu" FontSize="16" FontAttributes="Bold"
+             TextColor="Black"/>
+
+            <Border BackgroundColor="#6B7280" Stroke="Transparent"
+              HeightRequest="200" WidthRequest="150"
+              HorizontalOptions="Start" Padding="12">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="6" VerticalOptions="Center">
+                    <Label Text="Votre CV" TextColor="White" FontSize="18"
+                 FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Text="{Binding NomComplet}" TextColor="White"
+                 HorizontalTextAlignment="Center"/>
+                    <Label Text="{Binding Profession}" TextColor="White"
+                 FontSize="12" HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="{Binding Statut}" TextColor="Gray" FontSize="13"/>
+
+            <Button Text="Exporter en PDF"
+              BackgroundColor="{StaticResource Primary}"
+              TextColor="White" CornerRadius="14" HeightRequest="52"
+              Command="{Binding ExporterCommand}"/>
+            <Button Text="Partager"
+              BackgroundColor="{StaticResource Primary}"
+              TextColor="White" CornerRadius="14" HeightRequest="52"
+              Command="{Binding PartagerCommand}"/>
+            <Button Text="Enregistrer"
+              BackgroundColor="{StaticResource Primary}"
+              TextColor="White" CornerRadius="14" HeightRequest="52"
+              Command="{Binding EnregistrerCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -14,34 +14,38 @@
              TextColor="Gray" Margin="0,0,0,12"/>
 
             <Label Text="Prénom" FontAttributes="Bold" TextColor="Black"/>
-            <Entry x:Name="entryPrenom"/>
+            <Entry Text="{Binding Prenom}"/>
 
             <Label Text="Nom" FontAttributes="Bold" TextColor="Black"/>
-            <Entry x:Name="entryNom"/>
+            <Entry Text="{Binding Nom}"/>
 
             <Label Text="Adresse e-mail" FontAttributes="Bold"
              TextColor="Black"/>
-            <Entry x:Name="entryEmail" Keyboard="Email"/>
+            <Entry Text="{Binding Email}" Keyboard="Email"/>
 
             <Label Text="Mot de passe" FontAttributes="Bold"
              TextColor="Black"/>
-            <Entry x:Name="entryMotDePasse" IsPassword="True"/>
+            <Entry Text="{Binding MotDePasse}" IsPassword="True"/>
             <Label Text="8 caractères minimum" FontSize="12"
              TextColor="Gray"/>
 
             <Label Text="Confirmer le mot de passe" FontAttributes="Bold"
              TextColor="Black"/>
-            <Entry x:Name="entryConfirmation" IsPassword="True"/>
+            <Entry Text="{Binding Confirmation}" IsPassword="True"/>
+
+            <Label Text="{Binding Erreur}" TextColor="Red"
+             IsVisible="{Binding ErreurVisible}"/>
 
             <Button Text="Créer un compte" Margin="0,16,0,0"
               BackgroundColor="{StaticResource Primary}"
               TextColor="White" CornerRadius="14"
-              HeightRequest="52"/>
+              HeightRequest="52"
+              Command="{Binding InscrireCommand}"/>
 
             <Label Text="Se connecter" HorizontalOptions="Center"
              TextColor="{StaticResource Primary}" Margin="0,8,0,0">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnSeConnecterTapped"/>
+                    <TapGestureRecognizer Command="{Binding RetourCommand}"/>
                 </Label.GestureRecognizers>
             </Label>
 

@@ -1,18 +1,12 @@
+using CVExpress.ViewModels;
+
 namespace CVExpress.Views;
 
 public partial class LoginPage : ContentPage
 {
-    public LoginPage()
+    public LoginPage(LoginViewModel viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
     }
-
-    private async void OnSeConnecterClicked(object sender, EventArgs e)
-    {
-        await DisplayAlert("Connexion",
-            "La connexion sera branchée à l'étape suivante.", "OK");
-    }
-
-    private async void OnCreerCompteTapped(object sender, TappedEventArgs e)
-        => await Shell.Current.GoToAsync(nameof(RegisterPage));
 }

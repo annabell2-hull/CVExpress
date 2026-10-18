@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CVExpress.Views.ExperienceFormPage"
+             Title="Expérience"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="8">
+
+            <HorizontalStackLayout Spacing="14" Margin="0,0,0,12">
+                <Label Text="←" FontSize="26" TextColor="Gray"
+               VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RetourCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Expérience" FontSize="20" FontAttributes="Bold"
+               TextColor="Black" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Poste" FontAttributes="Bold" TextColor="Black"/>
+            <Entry Text="{Binding Poste}" Placeholder="Ex : Stagiaire développeur"/>
+
+            <Label Text="Entreprise" FontAttributes="Bold" TextColor="Black"/>
+            <Entry Text="{Binding Entreprise}"/>
+
+            <Label Text="Date" FontAttributes="Bold" TextColor="Black"/>
+            <Entry Text="{Binding Periode}" Placeholder="Ex : Juin 2025 - Août 2025"/>
+
+            <Label Text="{Binding Erreur}" TextColor="Red"
+             IsVisible="{Binding ErreurVisible}"/>
+
+            <Button Text="Enregistrer" Margin="0,12,0,0"
+              BackgroundColor="{StaticResource Primary}"
+              TextColor="White" CornerRadius="14" HeightRequest="52"
+              Command="{Binding EnregistrerCommand}"/>
+
+            <Button Text="Supprimer" BackgroundColor="White" TextColor="Red"
+              BorderColor="Red" BorderWidth="1" CornerRadius="14"
+              IsVisible="{Binding PeutSupprimer}"
+              Command="{Binding SupprimerCommand}"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

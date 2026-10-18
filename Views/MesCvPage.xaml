@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:CVExpress.ViewModels"
+             x:Class="CVExpress.Views.MesCvPage"
+             Title="Mes CV"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="24" RowSpacing="16">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+            <Label Text="Mes CV" FontSize="30" FontAttributes="Bold"
+             TextColor="{StaticResource Primary}"/>
+            <Label Grid.Column="1" Text="Déconnexion" FontSize="13"
+             TextColor="Gray" VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DeconnexionCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+
+        <Button Grid.Row="1" Text="Créer un CV"
+            BackgroundColor="{StaticResource Primary}"
+            TextColor="White" CornerRadius="14" HeightRequest="52"
+            Command="{Binding CreerCommand}"/>
+
+        <Grid Grid.Row="2">
+            <Label Text="Aucun CV pour l'instant. Appuie sur « Créer un CV »."
+             TextColor="Gray" HorizontalTextAlignment="Center"
+             VerticalOptions="Start" Margin="0,24,0,0"
+             IsVisible="{Binding Vide}"/>
+
+            <CollectionView ItemsSource="{Binding Cvs}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BackgroundColor="#F3F4F6" Stroke="Transparent"
+                    Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="12"/>
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="{Binding Titre}" FontSize="18"
+                       FontAttributes="Bold" TextColor="Black"/>
+                                <Label Text="{Binding ModifieLe}" FontSize="13"
+                       TextColor="Gray"/>
+                                <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                    <Button Text="Modifier" BackgroundColor="White"
+                          TextColor="{StaticResource Primary}"
+                          BorderColor="{StaticResource Primary}"
+                          BorderWidth="1" CornerRadius="12"
+                          Command="{Binding Source={RelativeSource
+                            AncestorType={x:Type vm:MesCvViewModel}},
+                            Path=ModifierCommand}"
+                          CommandParameter="{Binding .}"/>
+                                    <Button Grid.Column="1" Text="Aperçu"
+                          BackgroundColor="White"
+                          TextColor="{StaticResource Primary}"
+                          BorderColor="{StaticResource Primary}"
+                          BorderWidth="1" CornerRadius="12"
+                          Command="{Binding Source={RelativeSource
+                            AncestorType={x:Type vm:MesCvViewModel}},
+                            Path=ApercuCommand}"
+                          CommandParameter="{Binding .}"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+    </Grid>
+</ContentPage>
